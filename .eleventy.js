@@ -207,6 +207,7 @@ module.exports = function(eleventyConfig) {
     // permalinkSymbol: "#"
   };
 
+
   eleventyConfig.setLibrary("md", markdownIt(options)
     .use(mdIterator, 'url_new_win', 'link_open', function (tokens, idx) {
       const [attrName, href] = tokens[idx].attrs.find(attr => attr[0] === 'href')
@@ -215,6 +216,7 @@ module.exports = function(eleventyConfig) {
         tokens[idx].attrPush([ 'rel', 'noopener noreferrer' ])
       }
     })
+    // .use(markdownItObsidian)
     .use(markdownItAnchor, opts)
     .use(markdownItEmoji)
     .use(markdownItFootnote)
